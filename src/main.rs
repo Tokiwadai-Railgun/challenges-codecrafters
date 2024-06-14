@@ -8,8 +8,6 @@ use std::io::prelude::*;
 
 fn main() {
     // You can use print statements as follows for debugging, they'll be visible when running tests.
-    println!("Logs from your program will appear here!");
-
     // Uncomment this block to pass the first stage
     let args: Vec<String> = env::args().collect();
     if args[1] == "init" {
@@ -35,8 +33,9 @@ fn main() {
                 let mut s = String::new();
                 z.read_to_string(&mut s).expect("Error decoding data");
                 // Now filtering content to start after the first null char
-                let content = &s[s.find('\0').unwrap()..];
+                let content = &s[s.find('\0').unwrap() + 1..];
                 print!("{content}")
+                // print!("Testing the print function")
             }
         }
     } else {
